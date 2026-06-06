@@ -93,7 +93,8 @@ class FrankaMultiHardwareInterface : public hardware_interface::SystemInterface 
   std::map<std::string, ArmContainer> arms_;
   std::map<std::string, franka::RobotState*> state_pointers_;
 
-  ControlMode control_mode_;
+//   ControlMode control_mode_;
+  ControlMode control_mode_ = ControlMode::None;
   // Commands
 
   static rclcpp::Logger getLogger();

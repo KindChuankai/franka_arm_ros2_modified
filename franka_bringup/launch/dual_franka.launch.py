@@ -126,6 +126,7 @@ def generate_launch_description():
         Node(
             package='controller_manager',
             executable='ros2_control_node',
+            prefix=['taskset -c 2 chrt -f 90'],
             parameters=[{'robot_description': robot_description}, franka_controllers],
             remappings=[('joint_states', 'franka/joint_states')],
             output={
