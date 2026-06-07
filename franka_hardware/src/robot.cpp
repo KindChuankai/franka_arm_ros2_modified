@@ -391,11 +391,36 @@ void Robot::setFullCollisionBehavior(
 void Robot::setDefaultParams(){
   robot_->setJointImpedance({{3000, 3000, 3000, 2500, 2500, 2000, 2000}});
   robot_->setCartesianImpedance({{3000, 3000, 3000, 300, 300, 300}});
-  robot_->setCollisionBehavior(
-        {{20.0, 20.0, 18.0, 18.0, 16.0, 14.0, 12.0}}, {{20.0, 20.0, 18.0, 18.0, 16.0, 14.0, 12.0}},
-        {{20.0, 20.0, 18.0, 18.0, 16.0, 14.0, 12.0}}, {{20.0, 20.0, 18.0, 18.0, 16.0, 14.0, 12.0}},
-        {{20.0, 20.0, 20.0, 25.0, 25.0, 25.0}}, {{20.0, 20.0, 20.0, 25.0, 25.0, 25.0}},
-        {{20.0, 20.0, 20.0, 25.0, 25.0, 25.0}}, {{20.0, 20.0, 20.0, 25.0, 25.0, 25.0}});
+//   robot_->setCollisionBehavior(
+//         {{20.0, 20.0, 18.0, 18.0, 16.0, 14.0, 12.0}}, {{20.0, 20.0, 18.0, 18.0, 16.0, 14.0, 12.0}},
+//         {{20.0, 20.0, 18.0, 18.0, 16.0, 14.0, 12.0}}, {{20.0, 20.0, 18.0, 18.0, 16.0, 14.0, 12.0}},
+//         {{20.0, 20.0, 20.0, 25.0, 25.0, 25.0}}, {{20.0, 20.0, 20.0, 25.0, 25.0, 25.0}},
+//         {{20.0, 20.0, 20.0, 25.0, 25.0, 25.0}}, {{20.0, 20.0, 20.0, 25.0, 25.0, 25.0}});
+robot_->setCollisionBehavior(
+    // Joint torque thresholds during acceleration/deceleration
+    // lower/contact threshold: 4x original
+    {{80.0, 80.0, 72.0, 72.0, 64.0, 56.0, 48.0}},
+    // upper/collision threshold: 4x original
+    {{80.0, 80.0, 72.0, 72.0, 64.0, 56.0, 48.0}},
+
+    // Joint torque thresholds during nominal motion
+    // lower/contact threshold: 4x original
+    {{80.0, 80.0, 72.0, 72.0, 64.0, 56.0, 48.0}},
+    // upper/collision threshold: 4x original
+    {{80.0, 80.0, 72.0, 72.0, 64.0, 56.0, 48.0}},
+
+    // Cartesian force/torque thresholds during acceleration/deceleration
+    // lower/contact threshold: 4x original
+    {{80.0, 80.0, 80.0, 100.0, 100.0, 100.0}},
+    // upper/collision threshold: 4x original
+    {{80.0, 80.0, 80.0, 100.0, 100.0, 100.0}},
+
+    // Cartesian force/torque thresholds during nominal motion
+    // lower/contact threshold: 4x original
+    {{80.0, 80.0, 80.0, 100.0, 100.0, 100.0}},
+    // upper/collision threshold: 4x original
+    {{80.0, 80.0, 80.0, 100.0, 100.0, 100.0}}
+);
   init_params_set = true;
 }
 
